@@ -7,40 +7,6 @@
     <body>
         <h1>Jeopardy! stats</h1>
         <div id="CSVTable"></div>
-
-        <script src="https://d3js.org/d3.v6.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datasource@0.1.0"></script>
-
-        <canvas id="myChart" width="100" height="100"></canvas>
-        <script>
-          // Load the dataset
-          d3.csv("sample-dataset.csv").then(makeChart);
-    
-          // Plot the data with Chart.js
-          function makeChart(countries) {
-            var countryLabels = countries.map(function (d) {
-              return d.country;
-            });
-            var populationData = countries.map(function (d) {
-              return d.population;
-            });
-    
-            var chart = new Chart("myChart", {
-              type: "bar",
-              data: {
-                labels: countryLabels,
-                datasets: [
-                  {
-                    data: populationData 
-                  }
-                ]
-              }
-            });
-          }
-        </script>
-        </script>
-<!--
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script src="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/jquerycsvtotable/jquery.csvToTable.js"></script> 
         <script>
@@ -48,6 +14,5 @@
                 $('#CSVTable').CSVToTable('https://raw.githubusercontent.com/blueharen/j-stats/main/j_stats.csv');
             })
         </script>
-    -->
     </body>
 </html>

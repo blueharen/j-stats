@@ -23,8 +23,8 @@
         <canvas id="chart"></canvas>
         <script>
             function makeChart(data_row) {
-                var y = data_row.map(function(d) {return d.q_difficulty})
-                var x = data_row.map(function(d) {return d.seconds_to_answer})
+                var y = data_row.map(function(d) {return Number(d.q_difficulty)})
+                var x = data_row.map(function(d) {return Number(d.seconds_to_answer)})
                 
                 function getAllIndexes(arr, val) {
                     var indexes = [], i = -1;

@@ -14,12 +14,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
         
-        <script>
-            $(function() {
-                $('#CSVTable').CSVToTable('https://raw.githubusercontent.com/blueharen/j-stats/main/j_stats.csv');
-            })
-        </script>
-        
         <canvas id="chart"></canvas>
         <script>
             function makeChart(data_row) {
@@ -71,5 +65,11 @@
             d3.csv('https://raw.githubusercontent.com/blueharen/j-stats/main/j_stats.csv')
             .then(makeChart);
         </script>
+        <script>
+            $(function() {
+                $('#CSVTable').CSVToTable('https://raw.githubusercontent.com/blueharen/j-stats/main/j_stats.csv');
+            })
+        </script>
+        
     </body>
 </html>

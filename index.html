@@ -54,6 +54,10 @@
 
                 var chart = new Chart('chart', {
                     type: 'horizontalBar',
+                    title: {
+                        display: true,
+                        text: 'Win Percent by Question Difficulty'
+                    },
                     data: {
                         labels: x_values,
                         datasets: [

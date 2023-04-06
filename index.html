@@ -23,6 +23,8 @@
         <canvas id="chart"></canvas>
         <script>
             function makeChart(data_row) {
+                // parse .csv - stores y, x as arrays of strings or numbers (if casted.)
+                // ['1', '2',' 3',...]
                 var y = data_row.map(function(d) {return Number(d.q_difficulty)})
                 var x = data_row.map(function(d) {return d.is_correct})
                 x = x.map(q => Number(q == 'True'))
@@ -35,8 +37,6 @@
                 return indexes;
                 }
 
-                // x = [1,1,2,2,5,5,3,3,4,4]
-                // y = [10,20,90,109,873,10,893,827,9,1]
                 var e_list = [];
                 for (let i = 0; i < 5; i++) {
                     e_list.push(getAllIndexes(y, i+1));

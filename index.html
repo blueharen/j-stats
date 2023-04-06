@@ -6,15 +6,16 @@
     </head>
     <body>
         <h1>Jeopardy! stats</h1>
+        
+        <canvas id="chart"></canvas>
         <div id="CSVTable"></div>
+
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script src="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/jquerycsvtotable/jquery.csvToTable.js"></script> 
         
         <!-- Chart.js stuff -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-        
-        <canvas id="chart"></canvas>
         <script>
             function makeChart(data_row) {
                 // parse .csv - stores y, x as arrays of strings or numbers (if casted.)
@@ -47,10 +48,26 @@
                 var x_values = [1,2,3,4,5];
 
                 var chart = new Chart('chart', {
-                    type: 'horizontalBar',
-                    title: {
-                        display: true,
-                        text: 'Win Percent by Question Difficulty'
+                    type: 'bar',
+                    options: {
+                        legend: {
+                            display: false,
+                        },
+                        title: {
+                            display: true,
+                            text: 'Win Percent by Question Difficulty'
+                        },
+                        scales: {
+                            yAxes: [
+                                {
+                                    ticks: {
+                                        min: 0,
+                                        max: 1,
+                                        stepSize: 0.20
+                                    }
+                                }
+                            ]
+                        }
                     },
                     data: {
                         labels: x_values,
@@ -64,12 +81,11 @@
             }
             d3.csv('https://raw.githubusercontent.com/blueharen/j-stats/main/j_stats.csv')
             .then(makeChart);
-        </script>
-        <script>
+            
             $(function() {
                 $('#CSVTable').CSVToTable('https://raw.githubusercontent.com/blueharen/j-stats/main/j_stats.csv');
             })
-        </script>
         
+        </script>
     </body>
 </html>

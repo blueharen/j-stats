@@ -23,17 +23,34 @@
         <canvas id="chart"></canvas>
         <script>
             
-            function makeChart(x) {
-                var difficulty = x.map(function(d) {return d.q_difficulty})
-                var length = x.map(function(d) {return d.seconds_to_answer})
+            function makeChart(data_row) {
+                var y = data_row.map(function(d) {return d.q_difficulty})
+                var x = data_row.map(function(d) {return d.seconds_to_answer})
                 
+                // x = [1,1,2,2,5,5,3,3,4,4]
+                // y = [10,20,90,109,873,10,893,827,9,1]
+                var e_list = [];
+                for (let i = 0; i < 5; i++) {
+                    e_list.push(getAllIndexes(x, i+1));
+                }
+
+                const average = array => array.reduce((a, b) => a + b) / array.length;
+                var average_list = [];
+                for (let v = 0; v < e_list.length; v++) {
+                    let idx_list = x.filter((_,i) => e_list[v].includes( i ));
+                    average_list.push(average(idx_list));
+                }
+                
+                var y_values = average_list;
+                var x_values = [1,2,3,4,5];
+
                 var chart = new Chart('chart', {
                     type: 'horizontalBar',
                     data: {
-                        labels: difficulty,
+                        labels: x_values,
                         datasets: [
                             {
-                                data: length
+                                data: y_values
                             }
                         ]
                     }

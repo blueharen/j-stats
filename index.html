@@ -22,7 +22,6 @@
         
         <canvas id="chart"></canvas>
         <script>
-            
             function makeChart(data_row) {
                 var y = data_row.map(function(d) {return d.q_difficulty})
                 var x = data_row.map(function(d) {return d.seconds_to_answer})
@@ -39,7 +38,7 @@
                 // y = [10,20,90,109,873,10,893,827,9,1]
                 var e_list = [];
                 for (let i = 0; i < 5; i++) {
-                    e_list.push(getAllIndexes(x, i+1));
+                    e_list.push(getAllIndexes(y, i+1));
                 }
 
                 const average = array => array.reduce((a, b) => a + b) / array.length;
